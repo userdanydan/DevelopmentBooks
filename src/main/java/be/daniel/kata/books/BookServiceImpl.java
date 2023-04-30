@@ -1,4 +1,9 @@
 package be.daniel.kata.books;
 
-public class BookServiceImpl {
+import java.util.Optional;
+
+public class BookServiceImpl implements BookService {
+    public Optional<Book> findBookByTitle(String title) {
+        return Optional.empty();
+    }
 }
