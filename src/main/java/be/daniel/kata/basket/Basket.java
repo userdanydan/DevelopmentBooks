@@ -13,4 +13,8 @@ import java.util.List;
 class Basket {
     private List<Book> books;
     private Double totalPrice;
+
+    public Double getTotalPrice() {
+        return books.stream().mapToDouble(Book::getPrice).sum();
+    }
 }
