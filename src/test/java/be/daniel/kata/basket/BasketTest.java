@@ -117,5 +117,32 @@ class BasketTest {
         var actual = basket.getTotalPrice();
         assertEquals(expected, actual);
     }
+@Test
+    void aBasketShouldApplyADiscountof25PCRTForFiveDifferentBooks(){
+        Basket basket = new Basket();
+        var book1 = new Book();
+        book1.setTitle("test1");
+        book1.setPrice(50.0);
 
+        var book2 = new Book();
+        book2.setTitle("test2");
+        book2.setPrice(50.0);
+
+        var book3 = new Book();
+        book3.setTitle("test3");
+        book3.setPrice(50.0);
+
+        var book4 = new Book();
+        book4.setTitle("test4");
+        book4.setPrice(50.0);
+
+        var book5 = new Book();
+        book5.setTitle("test5");
+        book5.setPrice(50.0);
+
+        basket.setBooks(List.of(book1, book2, book3, book4, book5));
+        var expected = 187.5;
+        var actual = basket.getTotalPrice();
+        assertEquals(expected, actual);
+    }
 }
