@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,6 +45,15 @@ class BookServiceTest {
         bookRepository.save(book1);
         var expected = book1.getTitle();
         var actual = bookService.findBookByTitle("test1").orElseThrow().getTitle();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testFindingAllBooks(){
+        when(bookRepository.findAll()).thenReturn(List.of(book1));
+        bookRepository.save(book1);
+        var expected = List.of(book1);
+        var actual = bookService.findAllBooks();
         assertEquals(expected, actual);
     }
 
