@@ -1,6 +1,7 @@
 package be.daniel.kata.basket;
 
 import be.daniel.kata.books.Book;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,23 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-class Basket {
+@Entity
+public class Basket {
+    @Id
+    @Column(nullable = false, updatable = false)
+    @SequenceGenerator(
+            name = "primary_sequence",
+            sequenceName = "primary_sequence",
+            allocationSize = 1,
+            initialValue = 10000
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "primary_sequence"
+    )
+    private Long id;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "books_id")
     private List<Book> books;
     private Double totalPrice;
 
