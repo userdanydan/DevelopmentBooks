@@ -2,6 +2,8 @@ package books;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class BookTest {
 
     @Test
@@ -10,6 +12,6 @@ class BookTest {
         var expected = "testTitle";
         book.setTitle(expected);
         var actual = book.getTitle();
-        assetEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 }
