@@ -12,4 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 class Basket {
     private List<Book> books;
+    private Double totalPrice;
 }
