@@ -3,6 +3,7 @@ package be.daniel.kata.books;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BookTest {
 
@@ -31,6 +32,15 @@ class BookTest {
         Book book2 = new Book();
         book2.setTitle("title1");
         assertEquals(book1, book2);
+    }
+
+    @Test
+    void twoBooksWithDifferentTitleIsNotTheSameBook() {
+        Book book1 = new Book();
+        book1.setTitle("title1");
+        Book book2 = new Book();
+        book2.setTitle("title2");
+        assertNotEquals(book1, book2);
     }
 
 
