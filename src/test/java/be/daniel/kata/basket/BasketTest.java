@@ -71,4 +71,25 @@ class BasketTest {
         var actual = basket.getTotalPrice();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void aBasketShouldApplyNotADiscountof10PCRTForThreeSameBooks(){
+        Basket basket = new Basket();
+        var book1 = new Book();
+        book1.setTitle("test1");
+        book1.setPrice(50.0);
+
+        var book2 = new Book();
+        book2.setTitle("test1");
+        book2.setPrice(50.0);
+
+        var book3 = new Book();
+        book3.setTitle("test1");
+        book3.setPrice(50.0);
+
+        basket.setBooks(List.of(book1, book2, book3));
+        var expected = 150.0;
+        var actual = basket.getTotalPrice();
+        assertEquals(expected, actual);
+    }
 }

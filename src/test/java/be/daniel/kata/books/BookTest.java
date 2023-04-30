@@ -24,5 +24,14 @@ class BookTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void twoBooksWithSameTitleIsTheSameBook() {
+        Book book1 = new Book();
+        book1.setTitle("title1");
+        Book book2 = new Book();
+        book2.setTitle("title1");
+        assertEquals(book1, book2);
+    }
+
 
 }
