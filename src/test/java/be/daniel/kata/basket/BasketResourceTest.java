@@ -49,7 +49,7 @@ class BasketResourceTest {
         mockMvc.perform(get("/basket/{id}", 1L))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(book)));
+                .andExpect(content().json(objectMapper.writeValueAsString(basket)));
     }
 
 }
