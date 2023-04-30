@@ -42,6 +42,4 @@ class BookTest {
         book2.setTitle("title2");
         assertNotEquals(book1, book2);
     }
-
-
 }
