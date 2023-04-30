@@ -109,11 +109,11 @@ class BasketTest {
         book3.setPrice(50.0);
 
         var book4 = new Book();
-        book3.setTitle("test4");
-        book3.setPrice(50.0);
+        book4.setTitle("test4");
+        book4.setPrice(50.0);
 
         basket.setBooks(List.of(book1, book2, book3, book4));
-        var expected = 135.0;
+        var expected = 160.0;
         var actual = basket.getTotalPrice();
         assertEquals(expected, actual);
     }

@@ -23,6 +23,8 @@ class Basket {
                 discount = 0.05;
             } else if (books.size() == 3) {
                 discount = 0.1;
+            } else if (books.size()==4) {
+                discount = 0.2;
             }
         }
         var total = books.stream()
