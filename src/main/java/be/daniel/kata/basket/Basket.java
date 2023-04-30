@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Getter
@@ -15,12 +16,14 @@ class Basket {
     private Double totalPrice;
 
     public Double getTotalPrice() {
-
         double discount = .0;
-        if (books.size() == 2) {
-            discount = 0.05;
-        } else if (books.size() == 3) {
-            discount = 0.1;
+        var set = new HashSet<>(books);
+        if(set.size()==books.size()){
+            if (books.size() == 2) {
+                discount = 0.05;
+            } else if (books.size() == 3) {
+                discount = 0.1;
+            }
         }
         var total = books.stream()
                 .mapToDouble(Book::getPrice)
