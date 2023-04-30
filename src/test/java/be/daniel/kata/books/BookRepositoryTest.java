@@ -17,7 +17,8 @@ class BookRepositoryTest {
 
     private final BookRepository repository;
 
-    public BookRepositoryTest(@Autowired TestEntityManager entityManager,@Autowired BookRepository repository) {
+    public BookRepositoryTest(@Autowired TestEntityManager entityManager,
+                              @Autowired BookRepository repository) {
         this.entityManager = entityManager;
         this.repository = repository;
     }
