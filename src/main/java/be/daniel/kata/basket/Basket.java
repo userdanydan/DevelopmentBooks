@@ -15,7 +15,12 @@ class Basket {
     private Double totalPrice;
 
     public Double getTotalPrice() {
-        double discount = 0.05;
+        double discount = .0;
+        if(books.size()==2){
+            discount=0.05;
+        }else if(books.size()==3){
+            discount=0.1;
+        }
         var total = books.stream()
                 .mapToDouble(Book::getPrice)
                 .sum();
