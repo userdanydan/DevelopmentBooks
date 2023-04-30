@@ -7,19 +7,36 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
+@Transactional(propagation = Propagation.REQUIRED)
 class BookRepositoryTest {
-    @Autowired
-    private TestEntityManager entityManager;
+    private final TestEntityManager entityManager;
 
-    @Autowired
-    private BookRepository repository;
+    private final BookRepository repository;
 
+    public BookRepositoryTest(@Autowired TestEntityManager entityManager,@Autowired BookRepository repository) {
+        this.entityManager = entityManager;
+        this.repository = repository;
+    }
+
+    @Test
+    void entityManagerIsThere(){
+        assertNotNull(entityManager);
+    }
     @Test
     void booksHasARepositoryForPersistence() {
         assertNotNull(repository);
+    }
+
+    @Test
+    void aBookIsPersisted(){
+        Book book = new Book();
+        book.setTitle("test1");
+        var id = this.entityManager.persist(book).getId();
+        Book bookFromPeristence = repository.findById(id).orElseThrow();
+        assertEquals(book.getTitle(), bookFromPeristence.getTitle());
     }
 }
