@@ -23,10 +23,13 @@ class BookResourceTest {
     @MockBean
     BookServiceImpl bookService;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     private Book book;
+
+    BookResourceTest(@Autowired ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     @BeforeEach
     void setUp() {
@@ -39,7 +42,7 @@ class BookResourceTest {
     @Test
     void getABookByTitle() throws Exception {
         given(bookService.findBookByTitle("test")).willReturn(Optional.of(book));
-        var result = mockMvc.perform(get("/book/{title}", "test"))
+        mockMvc.perform(get("/books/{title}", "test"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(objectMapper.writeValueAsString(book)));
