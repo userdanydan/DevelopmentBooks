@@ -7,7 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
@@ -20,6 +20,6 @@ class BookRepositoryTest {
 
     @Test
     void booksHasARepositoryForPersistence() {
-        assertEquals(repository);
+        assertNotNull(repository);
     }
 }
