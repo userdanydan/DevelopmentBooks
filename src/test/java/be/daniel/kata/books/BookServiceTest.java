@@ -33,14 +33,14 @@ class BookServiceTest {
 
     @Test
     void testBookServiceIsAInterface(){
-        BookService bookService1 = new BookServiceImpl();
+        BookService bookService1 = new BookServiceImpl(bookRepository);
         assertTrue(bookService1 instanceof BookServiceImpl);
     }
 
 
     @Test
     void testFindingABook(){
-        when(bookRepository.findByName("test1")).thenReturn(Optional.of(book1));
+        when(bookRepository.findByTitle("test1")).thenReturn(Optional.of(book1));
         bookRepository.save(book1);
         var expected = book1.getTitle();
         var actual = bookService.findBookByTitle("test1").orElseThrow().getTitle();
