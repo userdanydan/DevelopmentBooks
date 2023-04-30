@@ -1,4 +1,4 @@
-package books;
+package be.daniel.kata.books;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-class Book {
+public class Book {
     private String title;
     private Double price;
 }
