@@ -20,7 +20,7 @@ class BookTest {
         Book book = new Book();
         var expected = 50.0;
         book.setPrice(expected);
-        var actual = book.getPrice(50.0);
+        var actual = book.getPrice();
         assertEquals(expected, actual);
     }
 

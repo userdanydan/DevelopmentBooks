@@ -9,4 +9,5 @@ import lombok.Setter;
 @NoArgsConstructor
 class Book {
     private String title;
+    private Double price;
 }
