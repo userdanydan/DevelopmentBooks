@@ -41,7 +41,7 @@ class BasketServiceTest {
     }
 
     @Test
-    void testFindBasketById() {
+    void testSaveAndFindBasketById() {
         when(basketRepository.findById(1L)).thenReturn(Optional.of(basket));
         basket.setBooks(List.of(book));
         basketRepository.save(basket);
@@ -49,5 +49,4 @@ class BasketServiceTest {
         var actual = book.getTitle();
         assertEquals(expected, actual);
     }
-
 }

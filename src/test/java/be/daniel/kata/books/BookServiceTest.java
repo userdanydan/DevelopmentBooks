@@ -40,7 +40,7 @@ class BookServiceTest {
 
 
     @Test
-    void testFindingABook(){
+    void testSaveAndFindingABook(){
         when(bookRepository.findByTitle("test1")).thenReturn(Optional.of(book1));
         bookRepository.save(book1);
         var expected = book1.getTitle();
@@ -49,13 +49,11 @@ class BookServiceTest {
     }
 
     @Test
-    void testFindingAllBooks(){
+    void testSaveAndFindingAllBooks(){
         when(bookRepository.findAll()).thenReturn(List.of(book1));
         bookRepository.save(book1);
         var expected = List.of(book1);
         var actual = bookService.findAllBooks();
         assertEquals(expected, actual);
     }
-
-
 }
