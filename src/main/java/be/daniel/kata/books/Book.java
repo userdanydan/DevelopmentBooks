@@ -28,6 +28,11 @@ public class Book {
     private String title;
     private Double price;
 
+    public Book(String title, Double price) {
+        this.title = title;
+        this.price = price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
