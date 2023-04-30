@@ -16,7 +16,9 @@ class Basket {
 
     public Double getTotalPrice() {
         double discount = 0.05;
-        var total = books.stream().mapToDouble(Book::getPrice).sum();
+        var total = books.stream()
+                .mapToDouble(Book::getPrice)
+                .sum();
         return total*(1.0-discount);
     }
 }
