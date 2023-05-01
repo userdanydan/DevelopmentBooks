@@ -3,14 +3,24 @@ package be.daniel.kata.basket;
 import be.daniel.kata.books.Book;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BasketTest {
+    final String CLEAN_CODE = "Clean Code";
+    final String CLEAN_CODER = "The Clean Coder";
+    final String CLEAN_ARCHITECTURE = "Clean Architecture";
+    final String TDD_BY_EXAMPLE = "Test Driven Development by Example";
+    final String WORKING_WITH_LEGACY_CODE = "Working Effectively With Legacy Code";
+
+    final double BOOK_PRICE = 50;
 
     @Test
-    void aBasketHasBooks(){
+    void aBasketHasBooks() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -21,23 +31,9 @@ class BasketTest {
         var expected = List.of(book1, book2);
         assertEquals(expected, actual);
     }
-    @Test
-    void aBasketHasATotalPrice(){
-        Basket basket = new Basket();
-        var book1 = new Book();
-        book1.setTitle("test1");
-        book1.setPrice(.0);
-        var book2 = new Book();
-        book2.setTitle("test2");
-        book2.setPrice(.0);
-        basket.setBooks(List.of(book1, book2));
-        var expected = .0;
-        var actual = basket.getTotalPrice();
-        assertEquals(expected, actual);
-    }
 
     @Test
-    void aBasketShouldApplyADiscountOf5PCRT(){
+    void aBasketShouldApplyADiscountOf5PCRT() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -52,7 +48,7 @@ class BasketTest {
     }
 
     @Test
-    void aBasketShouldApplyADiscountof10PCRTForThreeDifferentBooks(){
+    void aBasketShouldApplyADiscountof10PCRTForThreeDifferentBooks() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -73,7 +69,7 @@ class BasketTest {
     }
 
     @Test
-    void aBasketShouldApplyNotADiscountof10PCRTForThreeSameBooks(){
+    void aBasketShouldApplyNotADiscountof10PCRTForThreeSameBooks() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -94,7 +90,7 @@ class BasketTest {
     }
 
     @Test
-    void aBasketShouldApplyADiscountof20PCRTForForDifferentBooks(){
+    void aBasketShouldApplyADiscountof20PCRTForForDifferentBooks() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -117,8 +113,9 @@ class BasketTest {
         var actual = basket.getTotalPrice();
         assertEquals(expected, actual);
     }
-@Test
-    void aBasketShouldApplyADiscountof25PCRTForFiveDifferentBooks(){
+
+    @Test
+    void aBasketShouldApplyADiscountof25PCRTForFiveDifferentBooks() {
         Basket basket = new Basket();
         var book1 = new Book();
         book1.setTitle("test1");
@@ -145,4 +142,26 @@ class BasketTest {
         var actual = basket.getTotalPrice();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void aBasketShoulOptimizeDiscounts() {
+
+        //Arrange
+        Basket basket = new Basket();
+        basket.addBook(new Book(CLEAN_CODE, BOOK_PRICE));
+        basket.addBook(new Book(CLEAN_CODE, BOOK_PRICE));
+        basket.addBook(new Book(CLEAN_CODER, BOOK_PRICE));
+        basket.addBook(new Book(CLEAN_CODER, BOOK_PRICE));
+        basket.addBook(new Book(CLEAN_ARCHITECTURE, BOOK_PRICE));
+        basket.addBook(new Book(CLEAN_ARCHITECTURE, BOOK_PRICE));
+        basket.addBook(new Book(TDD_BY_EXAMPLE, BOOK_PRICE));
+        basket.addBook(new Book(WORKING_WITH_LEGACY_CODE, BOOK_PRICE));
+
+        // Act
+        double price = basket.getTotalPrice();
+
+        // Assert
+        assertEquals(320, price, 0.01);
+    }
+
 }

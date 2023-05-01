@@ -31,7 +31,6 @@ public class KataApplication {
                     bookRepository.save(new Book("Clean Architecture", 50.0)),
                     bookRepository.save(new Book("Test Driven Development by Example", 50.0))
             );
-
         };
     }
 

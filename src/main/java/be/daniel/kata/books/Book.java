@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Entity
 public class Book {
     @Id
